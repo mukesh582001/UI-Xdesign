@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(20, 14.3%, 4.1%);
+  --muted: hsl(60, 4.8%, 95.9%);
+  --muted-foreground: hsl(25, 5.3%, 44.7%);
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(20, 14.3%, 4.1%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(20, 14.3%, 4.1%);
+  --border: hsl(20, 5.9%, 90%);
+  --input: hsl(20, 5.9%, 90%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(60, 4.8%, 95.9%);
+  --secondary-foreground: hsl(24, 9.8%, 10%);
+  --accent: hsl(60, 4.8%, 95.9%);
+  --accent-foreground: hsl(24, 9.8%, 10%);
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(60, 9.1%, 97.8%);
+  --ring: hsl(20, 14.3%, 4.1%);
+  --radius: 0.5rem;
+  
+  /* Timber Craft branding colors */
+  --timber-primary: hsl(206, 100%, 52%);
+  --timber-secondary: hsl(210, 40%, 98%);
+  --timber-accent: hsl(39, 100%, 50%);
+  --timber-neutral: hsl(215, 16%, 47%);
+  --timber-success: hsl(152, 76%, 36%);
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --primary: hsl(207, 90%, 54%);
+  --primary-foreground: hsl(211, 100%, 99%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --ring: hsl(240, 4.9%, 83.9%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-gray-50 text-foreground;
+  }
+  
+  /* Timber Craft branded styles */
+  .timber-gradient {
+    background: linear-gradient(135deg, var(--timber-primary), var(--timber-accent));
+  }
+  
+  .timber-brand-shadow {
+    box-shadow: 0 4px 20px rgba(52, 152, 219, 0.15);
+  }
+}
+
+@layer components {
+  .wall-color-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    mix-blend-mode: soft-light;
+    transition: opacity 300ms ease-in-out;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  
+  .kitchen-preview-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+  }
+  
+  .customization-option {
+    @apply border border-gray-200 rounded-lg transition-colors duration-200 hover:border-primary cursor-pointer;
+  }
+  
+  .customization-option.selected {
+    @apply border-primary bg-blue-50;
+  }
+  
+  .style-preset-button {
+    @apply rounded-lg p-3 text-sm font-medium transition-colors duration-200;
+  }
+  
+  .style-preset-button.active {
+    @apply bg-primary text-white;
+  }
+  
+  .style-preset-button:not(.active) {
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+  }
+}
+
+@layer utilities {
+  .gradient-overlay {
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+  }
+}
