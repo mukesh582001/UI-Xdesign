@@ -163,14 +163,29 @@ export default function Home() {
 
           {/* Right section - Actions and branding */}
           <div className="flex items-center space-x-3">
-            <Button
-              onClick={togglePreviewMode}
-              className={`${isPreviewMode ? 'bg-red-500 hover:bg-red-600' : 'timber-gradient-subtle hover:opacity-90'} text-white shadow-sm transition-all duration-200`}
-              size="sm"
-            >
-              <Expand className="h-4 w-4 mr-2" />
-              {isPreviewMode ? 'Exit Preview' : 'Preview'}
-            </Button>
+            {/* Preview Mode Exit Button */}
+            {isPreviewMode && (
+              <Button
+                onClick={togglePreviewMode}
+                className="bg-red-500 hover:bg-red-600 text-white shadow-sm transition-all duration-200"
+                size="sm"
+              >
+                <X className="h-4 w-4 mr-2" />
+                Exit Preview
+              </Button>
+            )}
+            
+            {/* Regular Preview Button */}
+            {!isPreviewMode && (
+              <Button
+                onClick={togglePreviewMode}
+                className="timber-gradient-subtle hover:opacity-90 text-white shadow-sm transition-all duration-200"
+                size="sm"
+              >
+                <Expand className="h-4 w-4 mr-2" />
+                Preview
+              </Button>
+            )}
             <Separator orientation="vertical" className="h-6" />
             <img src={BIOREV_LOGO} alt="Biorev Technology" className="h-6 w-auto opacity-70" />
           </div>
@@ -528,7 +543,9 @@ export default function Home() {
       {/* Enhanced Floating Action Buttons */}
       {!isPreviewMode && (
         <motion.div
-          className="fixed bottom-6 right-6 z-20 flex flex-col space-y-3"
+          className={`fixed bottom-6 z-20 flex flex-col space-y-3 transition-all duration-300 ${
+            showSidebar ? 'right-[25rem]' : 'right-6'
+          }`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.3 }}
@@ -536,7 +553,7 @@ export default function Home() {
           <Button
             onClick={handleSaveDesign}
             disabled={isLoading}
-            className="floating-action shadow-lg hover:shadow-xl"
+            className="floating-action shadow-lg hover:shadow-xl w-12 h-12"
             size="sm"
           >
             {isLoading ? (
@@ -548,7 +565,7 @@ export default function Home() {
           
           <Button
             onClick={handleShareDesign}
-            className="floating-action shadow-lg hover:shadow-xl"
+            className="floating-action shadow-lg hover:shadow-xl w-12 h-12"
             size="sm"
           >
             <Share className="h-4 w-4" />
