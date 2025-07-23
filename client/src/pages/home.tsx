@@ -363,7 +363,7 @@ export default function Home() {
                         >
                           <div
                             onClick={() => handleCategorySelect(category.id)}
-                            className="category-button"
+                            className="category-button group"
                           >
                             <div className="flex items-center space-x-4">
                               <div className="p-3 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors duration-200">
