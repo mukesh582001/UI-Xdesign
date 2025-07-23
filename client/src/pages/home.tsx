@@ -163,6 +163,36 @@ export default function Home() {
 
           {/* Right section - Actions and branding */}
           <div className="flex items-center space-x-3">
+            {/* Save and Share buttons */}
+            {!isPreviewMode && (
+              <>
+                <Button
+                  onClick={handleSaveDesign}
+                  disabled={isLoading}
+                  variant="ghost"
+                  size="sm"
+                  className="text-blue-600 hover:bg-blue-50 transition-all duration-200"
+                >
+                  {isLoading ? (
+                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-blue-600 mr-2"></div>
+                  ) : (
+                    <Save className="h-4 w-4 mr-2" />
+                  )}
+                  Save
+                </Button>
+                
+                <Button
+                  onClick={handleShareDesign}
+                  variant="ghost"
+                  size="sm"
+                  className="text-blue-600 hover:bg-blue-50 transition-all duration-200"
+                >
+                  <Share className="h-4 w-4 mr-2" />
+                  Share
+                </Button>
+              </>
+            )}
+
             {/* Preview Mode Exit Button */}
             {isPreviewMode && (
               <Button
@@ -539,39 +569,6 @@ export default function Home() {
           )}
         </AnimatePresence>
       </div>
-
-      {/* Enhanced Floating Action Buttons */}
-      {!isPreviewMode && (
-        <motion.div
-          className={`fixed bottom-6 z-20 flex flex-col space-y-3 transition-all duration-300 ${
-            showSidebar ? 'right-[25rem]' : 'right-6'
-          }`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.3 }}
-        >
-          <Button
-            onClick={handleSaveDesign}
-            disabled={isLoading}
-            className="floating-action shadow-lg hover:shadow-xl w-12 h-12"
-            size="sm"
-          >
-            {isLoading ? (
-              <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-gray-600"></div>
-            ) : (
-              <Save className="h-4 w-4" />
-            )}
-          </Button>
-          
-          <Button
-            onClick={handleShareDesign}
-            className="floating-action shadow-lg hover:shadow-xl w-12 h-12"
-            size="sm"
-          >
-            <Share className="h-4 w-4" />
-          </Button>
-        </motion.div>
-      )}
     </div>
   );
 }
